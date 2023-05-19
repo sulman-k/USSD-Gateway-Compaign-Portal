@@ -1,0 +1,31 @@
+<html>
+<head>
+	<title>Express</title>
+	<link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+
+<body>
+<h1>Node Boilerplate</h1>
+<p>Welcome to Node Server</p>
+</body>
+<script src="/socket.io/socket.io.js"></script>
+<script>
+    const uuid = "swagger_client";
+    const socket = io( { query: { uuid: `${uuid}` } } );
+    socket.on( "toCallReceived", (data) => {
+        console.log( "To Call GSM Server Data", JSON.stringify( data ) );
+        data.verifed = true;
+        socket.emit( "toVerified", data, (response) => {
+            console.info( "[toVerified][response]", response );
+        } );
+    } );
+    socket.on( "toSMSReceived", (data) => {
+        console.log( "To SMS GSM Server Data", JSON.stringify( data ) );
+        data.verifed = true;
+        socket.emit( "toSMSVerified", data, (response) => {
+            console.info( "[toSMSVerified][response]", response );
+    } );
+    } );
+
+</script>
+</html>

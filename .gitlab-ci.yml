@@ -1,0 +1,75 @@
+# Official framework image. Look for the different tagged releases at:
+# https://hub.docker.com/r/library/node/tags/
+image: node:10-alpine #Node minimalistic version
+
+# Pick zero or more services to be used on all builds.
+# Only needed when using a docker container to run your tests in.
+# Check out: http://docs.gitlab.com/ce/ci/docker/using_docker_images.html#what-is-a-service
+services:
+  - mongo:latest
+  - redis:latest
+
+stages:
+  - build
+  - test
+  # - staging
+  # - prod
+
+#before_script runs for every stage. Used to execute common tasks
+# before_script:
+#   - apt-get update -qq && apt-get install
+#   - another-command that will run after the one above
+#   - you can keep adding lines and lines.
+
+# This folder is cached between builds/jobs
+# http://docs.gitlab.com/ce/ci/yaml/README.html#cache
+#https://docs.gitlab.com/ee/ci/caching/#caching-nodejs-dependencies
+cache:
+  paths:
+  - node_modules/ #Cache node_modules
+
+Build Application:
+  tags: 
+    - ci
+  stage: build
+  script:
+    - npm install
+  artifacts: # Used to save and pass data between different stages
+    paths:
+    - node_modules/
+  #when: delayed
+  #start_in: 10 seconds
+
+Unit Testing:
+  tags:
+    - ci
+  # before_script:
+  #   - apk add --no-cache bash curl grep jq
+  stage: test
+  script:
+    - npm test
+
+# Staging:
+#   stage: staging
+#   only: 
+#     - staging
+    
+# Open Merge Request:
+#   before_script:
+#     - apk add --no-cache bash curl grep jq #Install bash, curl and jq
+#   stage: openMerge
+#   script:
+#     - BASE_URL=${CI_PROJECT_URL} HOST=${CI_PROJECT_URL} CI_PROJECT_ID=${CI_PROJECT_ID} CI_COMMIT_REF_NAME=${CI_COMMIT_REF_NAME} GITLAB_USER_ID=${GITLAB_USER_ID} PRIVATE_TOKEN=${PRIVATE_TOKEN} bash ./scripts/generate-merge-request.sh
+#   only:
+#     - dev
+#     - staging
+
+# Open Merge Request:
+#   before_script:
+#     - apk add --no-cache bash curl grep jq #Install bash, curl and jq, parsing details: http://www.compciv.org/recipes/cli/jq-for-parsing-json/
+#   stage: openMrg
+#   script:
+#     - BASE_URL=${CI_PROJECT_URL} HOST=${CI_PROJECT_URL} CI_PROJECT_ID=${CI_PROJECT_ID} CI_COMMIT_REF_NAME=${CI_COMMIT_REF_NAME} GITLAB_USER_ID=${GITLAB_USER_ID} PRIVATE_TOKEN=${PRIVATE_TOKEN} bash ./scripts/generate-merge-request.sh
+#   only:
+#     - dev
+#     - staging

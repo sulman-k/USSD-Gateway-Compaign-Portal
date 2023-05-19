@@ -1,0 +1,19 @@
+{
+    "db": {
+      "driver" : "mongodb",
+      "host"   : "localhost",
+      "port"   : "27017",
+      "name"   : "",
+      "replica": {
+        "replicaPort": "27017"
+      }
+    },
+    "logger": {
+      "dataBase": {
+        "host"            : "localhost",
+        "db"              : "sampleDevLogs",
+        "apiLogCollection": "apiLogs",
+        "port"            : "27017"
+      }
+    }
+  }

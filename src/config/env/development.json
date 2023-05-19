@@ -1,0 +1,17 @@
+{
+  "db": {
+    "host": "192.168.2.181",
+    "user": "root",
+    "password": "root",
+    "db_name": "campaign_portal",
+    "limit": 5
+  },
+  "logger": {
+    "dataBase": {
+      "host": "localhost",
+      "db": "sampleDevLogs",
+      "apiLogCollection": "apiLogs",
+      "port": "27017"
+    }
+  }
+}

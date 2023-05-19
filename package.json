@@ -1,0 +1,60 @@
+{
+  "name": "node-boilerplate",
+  "version": "14.16.1",
+  "private": true,
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "mocha test/**/*.js",
+    "dev": "nodemon server.js",
+    "swagger": "node swagger.js"
+  },
+  "dependencies": {
+    "async": "^3.2.0",
+    "axios": "^0.27.2",
+    "bluebird": "^3.7.2",
+    "body-parser": "^1.18.3",
+    "cluster": "^0.7.7",
+    "cookie-parser": "~1.4.3",
+    "cors": "^2.8.5",
+    "csv-parse": "^4.16.3",
+    "csvtojson": "^2.0.10",
+    "debug": "~2.6.9",
+    "dotenv": "^8.2.0",
+    "express": "~4.16.0",
+    "express-fileupload": "^1.2.1",
+    "express-validator": "^6.14.0",
+    "formdata-node": "^4.3.1",
+    "fs": "0.0.1-security",
+    "jwt-decode": "^3.1.2",
+    "mariadb": "^2.5.5",
+    "moment": "^2.29.1",
+    "mongoose": "^5.7.13",
+    "multer": "^1.4.3",
+    "mysql2": "^2.3.3",
+    "nodemon": "^2.0.14",
+    "randomstring": "^1.2.1",
+    "request": "^2.88.2",
+    "sequelize": "^6.8.0",
+    "swagger-autogen": "^2.12.3",
+    "underscore": "^1.9.1",
+    "winston": "^3.2.1",
+    "winston-mongodb": "^4.0.3",
+    "winston-mysql": "^1.1.1",
+    "winston-sql-transport": "^3.1.0",
+    "xml2js": "^0.4.23"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "chai-http": "^4.2.1",
+    "mocha": "^6.2.3",
+    "socket.io-client": "^2.2.0",
+    "supertest": "^4.0.2",
+    "swagger-jsdoc": "^4.0.0",
+    "swagger-ui-express": "^4.1.6"
+  },
+  "engines": {
+    "node": "10.x.x",
+    "npm": "5.6.0"
+  }
+}
